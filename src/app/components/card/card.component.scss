@@ -1,0 +1,121 @@
+.animal-card {
+  width: 100%;
+  max-width: 320px;
+  height: 380px;
+}
+
+.animal-card__mat {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 16px;
+  transition: transform .25s ease, box-shadow .25s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 28px rgba(0,0,0,.12);
+  }
+}
+
+/* --- MAIN --- */
+.animal-card__main {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  opacity: 1; visibility: visible;
+  transition: opacity .25s ease, visibility .25s ease;
+
+  &--hidden { opacity: 0; visibility: hidden; }
+}
+
+.animal-card__image {
+  height: 58%;
+  object-fit: cover;
+  border-radius: 70%;
+}
+
+.animal-card__content {
+  flex: 1;
+  padding: 14px 16px 16px;
+  display: flex; flex-direction: column; gap: 6px;
+}
+
+.animal-card__title { margin: 0; font-size: 1.1rem; font-weight: 700; color: #111827; }
+.animal-card__id { margin: 0; color: #6b7280; font-size: .95rem; }
+
+/* --- DETAILS OVERLAY --- */
+.animal-card__details {
+  position: absolute; inset: 0;
+  background: rgba(255,255,255,.96);
+  display: flex; align-items: center; justify-content: center;
+  padding: 16px;
+  text-align: left;
+
+  opacity: 0; visibility: hidden;
+  transition: opacity .25s ease, visibility .25s ease;
+
+  &--visible { opacity: 1; visibility: visible; }
+}
+
+.animal-card__details-content { width: 100%; max-width: 90%; }
+.animal-card__details-title { margin: 0 0 10px; font-size: 1.1rem; color: #2563eb; font-weight: 700; }
+
+.animal-card__row {
+  display: flex; gap: 8px; align-items: baseline;
+  margin: 6px 0;
+
+  &--wrap {
+    align-items: flex-start;
+    .animal-card__value { white-space: normal; }
+  }
+}
+
+.animal-card__label {
+  min-width: 120px;
+  color: #6b7280;
+  font-weight: 600;
+  font-size: .95rem;
+}
+
+.animal-card__value {
+  color: #111827;
+  font-size: .95rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.animal-card__info-btn {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 1;
+  transition: background 0.2s;
+
+  &:hover {
+    background: rgba(255,255,255,1);
+  }
+}
+.large-icon {
+  font-size: 40px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+
+}
+
+@media (hover: none) and (pointer: coarse) {
+  /* per i touch: mostra cursore disattivato */
+  .animal-card__info-btn { cursor: pointer; }
+}
+
+@media (max-width: 768px) {
+  .animal-card { height: 360px; max-width: 100%; }
+  .animal-card__image { height: 54%; }
+}

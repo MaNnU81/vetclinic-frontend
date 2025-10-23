@@ -1,3 +1,17 @@
+<div class="layout">
+  <app-header class="header"></app-header>
 
+  <div class="main">
+    <app-navbar class="sidebar"></app-navbar>
+
+    <main class="content">
+      <!-- qui per ora mostriamo la home “statica”.
+           quando vorrai usare il routing: sostituirai <app-home> con <router-outlet> -->
+      <app-home></app-home>
+    </main>
+  </div>
+
+  <app-footer class="footer"></app-footer>
+</div>
 
 <router-outlet />

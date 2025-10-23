@@ -1,0 +1,80 @@
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* header full-width in alto */
+.header {
+  height: var(--header-h);
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+/* wrapper centrale con navbar + content */
+.main {
+  flex: 1;
+  display: flex;
+  min-height: calc(100vh - var(--header-h) - var(--footer-h));
+}
+
+/* navbar sinistra (full height) */
+.sidebar {
+  width: var(--sidebar-w);
+  border-right: 1px solid var(--border);
+  background: var(--surface);
+  overflow: auto; /* scroll se il menu è lungo */
+}
+
+/* corpo centrale */
+.content {
+  flex: 1;
+  padding: 24px;
+  overflow: auto;
+}
+
+/* footer full-width in basso */
+.footer {
+  height: var(--footer-h);
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+}
+
+@media (max-width: 768px) {
+  /* header un filo più compatto su mobile (opzionale) */
+  .header {
+    height: 56px;
+  }
+
+  /* wrapper centrale diventa colonna: sidebar sopra, contenuto sotto */
+  .main {
+    flex-direction: column;
+    min-height: auto; /* niente calc su mobile */
+  }
+
+  /* sidebar full-width con altezza contenuta e separatore in basso */
+  .sidebar {
+    order: 1;            /* prima del contenuto */
+    width: 100%;
+    height: 56px;        /* simile all'header */
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    overflow: auto;      /* scroll orizzontale se voci tante */
+    /* Se vuoi più spazio interno:
+    padding: 0 12px;
+    */
+  }
+
+  /* contenuto centrale sotto la sidebar */
+  .content {
+    order: 2;
+    padding: 16px;       /* un po’ meno padding su mobile */
+  }
+
+  /* footer resta in fondo full-width */
+  .footer {
+    height: 44px;        /* leggermente più compatto (opzionale) */
+  }
+}

@@ -1,0 +1,68 @@
+<div class="animal-card"
+     (mouseenter)="onMouseEnter()"
+     (mouseleave)="onMouseLeave()"
+     (click)="onToggleDetails()">
+
+  <mat-card class="animal-card__mat">
+
+    <!-- Bottone info -->
+    <button type="button"
+            class="animal-card__info-btn"
+            (click)="onToggleDetails(); $event.stopPropagation()"
+            aria-label="Dettagli">
+      <mat-icon class="large-icon">info</mat-icon>
+    </button>
+
+    <!-- Vista principale -->
+    <div class="animal-card__main"
+         [class.animal-card__main--hidden]="showDetails">
+      <img mat-card-image class="animal-card__image"
+           [src]="animal?.img || placeholder"
+           [alt]="animal?.name || 'animal photo'">
+      <mat-card-content class="animal-card__content">
+        <h3 class="animal-card__title">{{ animal?.name }}</h3>
+        <p class="animal-card__id">ID: {{ animal?.id }}</p>
+      </mat-card-content>
+    </div>
+
+    <!-- Vista dettagli -->
+    <div class="animal-card__details"
+         [class.animal-card__details--visible]="showDetails">
+      <mat-card-content class="animal-card__details-content">
+        <h3 class="animal-card__details-title">Dettagli</h3>
+
+        <div class="animal-card__row">
+          <span class="animal-card__label">Specie:</span>
+          <span class="animal-card__value">{{ animal?.species || '—' }}</span>
+        </div>
+
+        <div class="animal-card__row">
+          <span class="animal-card__label">Razza:</span>
+          <span class="animal-card__value">{{ animal?.breed || '—' }}</span>
+        </div>
+
+        <div class="animal-card__row">
+          <span class="animal-card__label">Anno nascita:</span>
+          <span class="animal-card__value">{{ animal?.yob || '—' }}</span>
+        </div>
+
+        <div class="animal-card__row">
+          <span class="animal-card__label">Proprietario:</span>
+          <span class="animal-card__value">{{ animal?.ownerName || '—' }}</span>
+        </div>
+
+        <div class="animal-card__row animal-card__row--wrap">
+          <span class="animal-card__label">Vaccini:</span>
+          <span class="animal-card__value">
+            <ng-container *ngIf="animal?.vaccines?.length; else noVax">
+              <mat-chip-set>
+                <mat-chip *ngFor="let v of animal!.vaccines">{{ v.name }}</mat-chip>
+              </mat-chip-set>
+            </ng-container>
+            <ng-template #noVax>—</ng-template>
+          </span>
+        </div>
+      </mat-card-content>
+    </div>
+  </mat-card>
+</div>

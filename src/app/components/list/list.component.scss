@@ -1,0 +1,34 @@
+.list {
+  padding: 8px;
+}
+
+.list__title {
+  margin: 0 0 16px 0;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.list__loading,
+.list__error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 32px 0;
+  color: var(--muted);
+}
+
+/* Griglia responsive */
+.list__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.list__item {
+  width: 100%;
+}
+
+/* Mobile: un po' più aria */
+@media (max-width: 768px) {
+  .list__grid { gap: 12px; }
+}

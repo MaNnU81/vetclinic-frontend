@@ -1,0 +1,25 @@
+
+<section class="list">
+  <h1 class="list__title">Animali</h1>
+
+  <!-- Loading -->
+  <!-- <div class="list__loading" *ngIf="loading">
+    <mat-spinner diameter="40"></mat-spinner>
+  </div> -->
+
+  <!-- Error -->
+  <!-- <div class="list__error" *ngIf="!loading && error">
+    {{ error }}
+  </div> -->
+
+  <!-- Grid -->
+  <div class="list__grid" >
+    <app-card
+      class="list__item"
+      *ngFor="let a of animals$ | async"
+      [animal]="a">
+    </app-card>
+
+    
+  </div>
+</section>
